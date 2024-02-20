@@ -59,6 +59,7 @@ const List: FC<IList> = ({ data, onItemPress, goToNextPage, isLoading, header })
       numColumns={2}
       onEndReachedThreshold={0.5}
       keyboardShouldPersistTaps='always'
+      keyboardDismissMode='on-drag'
       ListHeaderComponent={header}
       ListEmptyComponent={(!isLoading && !data.length && <Placeholder />) || undefined}
       ListFooterComponent={(isLoading && <Loader />) || undefined}
