@@ -8,8 +8,9 @@ import fetchMovies from '../../helpers/fetch-movies';
 import getUniqueListBy from '../../helpers/get-unique-list-by';
 import useDebounce from '../../hooks/use-debounce';
 import {INavigationStack} from '../../navigation/types';
+import {screens} from '../../navigation/constants';
 
-type TProps = NativeStackScreenProps<INavigationStack, 'Home'>;
+type TProps = NativeStackScreenProps<INavigationStack, 'home'>;
 
 /**
  * Home screen with movies
@@ -43,7 +44,7 @@ const Home: FC<TProps> = ({navigation: {navigate}}) => {
    * On row item press
    */
   const onItemPress = useCallback(
-    (details: IMovie) => navigate('Details', details),
+    (details: IMovie) => navigate(screens.details, details),
     [navigate]
   );
 

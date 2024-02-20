@@ -7,7 +7,7 @@ import ReleaseDate from '../../components/release-date';
 import styles from './styles';
 import {INavigationStack} from '../../navigation/types';
 
-type TProps = NativeStackScreenProps<INavigationStack, 'Details'>;
+type TProps = NativeStackScreenProps<INavigationStack, 'details'>;
 
 /**
  * Movie details screen
