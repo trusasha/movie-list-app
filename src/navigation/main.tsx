@@ -1,22 +1,22 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/home';
 import DetailsScreen from '../screens/details';
-import {INavigationStack} from './types';
+import { INavigationStack } from './types';
 import { screens } from './constants';
 
 const Stack = createNativeStackNavigator<INavigationStack>();
 
 const MainStack = () => (
   <Stack.Navigator initialRouteName={screens.home}>
-    <Stack.Screen name={screens.home} component={HomeScreen} options={{title: 'ALL MOVIES'}} />
+    <Stack.Screen name={screens.home} component={HomeScreen} options={{ title: 'ALL MOVIES' }} />
     <Stack.Screen
       name={screens.details}
       component={DetailsScreen}
       options={({
         route: {
-          params: {title},
+          params: { title },
         },
-      }) => ({title: title.toUpperCase()})}
+      }) => ({ title: title.toUpperCase() })}
     />
   </Stack.Navigator>
 );

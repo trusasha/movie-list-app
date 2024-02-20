@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
-import {ImageBackground, ScrollView, Text, View} from 'react-native';
+import React, { FC } from 'react';
+import { ImageBackground, ScrollView, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import getImageSrc from '../../helpers/get-image-src';
 import ReleaseDate from '../../components/release-date';
 import styles from './styles';
-import {INavigationStack} from '../../navigation/types';
+import { INavigationStack } from '../../navigation/types';
 
 type TProps = NativeStackScreenProps<INavigationStack, 'details'>;
 
@@ -15,7 +15,7 @@ type TProps = NativeStackScreenProps<INavigationStack, 'details'>;
  */
 const Details: FC<TProps> = ({
   route: {
-    params: {backdrop_path, poster_path, title, release_date, overview},
+    params: { backdrop_path, poster_path, title, release_date, overview },
   },
 }) => {
   const uri = getImageSrc(backdrop_path ?? poster_path);
@@ -23,7 +23,7 @@ const Details: FC<TProps> = ({
   return (
     <ScrollView style={styles.details}>
       <View style={styles.preview}>
-        <ImageBackground style={styles.image} source={{uri}}>
+        <ImageBackground style={styles.image} source={{ uri }}>
           <LinearGradient
             colors={[
               'rgba(255, 255, 255, 0)',

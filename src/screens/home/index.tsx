@@ -1,14 +1,14 @@
-import React, {FC, useCallback, useState} from 'react';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {useInfiniteQuery} from '@tanstack/react-query';
-import {IMovie} from '../../interfaces';
+import React, { FC, useCallback, useState } from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { IMovie } from '../../interfaces';
 import Search from '../../components/search';
 import List from '../../components/list';
 import fetchMovies from '../../helpers/fetch-movies';
 import getUniqueListBy from '../../helpers/get-unique-list-by';
 import useDebounce from '../../hooks/use-debounce';
-import {INavigationStack} from '../../navigation/types';
-import {screens} from '../../navigation/constants';
+import { INavigationStack } from '../../navigation/types';
+import { screens } from '../../navigation/constants';
 
 type TProps = NativeStackScreenProps<INavigationStack, 'home'>;
 
@@ -16,7 +16,7 @@ type TProps = NativeStackScreenProps<INavigationStack, 'home'>;
  * Home screen with movies
  * @constructor
  */
-const Home: FC<TProps> = ({navigation: {navigate}}) => {
+const Home: FC<TProps> = ({ navigation: { navigate } }) => {
   const [search, setSearch] = useState('');
 
   /**
@@ -27,12 +27,12 @@ const Home: FC<TProps> = ({navigation: {navigate}}) => {
   /**
    * Pagination hook
    */
-  const {data, isLoading, fetchNextPage, hasNextPage} = useInfiniteQuery({
+  const { data, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery({
     getNextPageParam: (lastPage) => (lastPage.data.length < 20 ? undefined : lastPage.nextPage),
     initialPageParam: 1,
     queryKey: ['movies-list'],
     queryFn: fetchMovies,
-    meta: {search: debounceSearch},
+    meta: { search: debounceSearch },
     queryHash: debounceSearch,
   });
 
@@ -45,7 +45,7 @@ const Home: FC<TProps> = ({navigation: {navigate}}) => {
    */
   const onItemPress = useCallback(
     (details: IMovie) => navigate(screens.details, details),
-    [navigate]
+    [navigate],
   );
 
   /**
